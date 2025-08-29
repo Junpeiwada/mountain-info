@@ -1385,6 +1385,32 @@
 
     </div>
 
+    <!-- コースプロファイル モーダル -->
+    <div class="modal fade" id="courseProfileModal" tabindex="-1" aria-labelledby="courseProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="courseProfileModalLabel">コースプロファイル</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-chart-container" style="height: 500px;">
+                        <!-- Chart.jsグラフがここに表示される -->
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">読み込み中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    <button type="button" class="btn btn-primary" onclick="window.open(document.getElementById('courseProfileModalLabel').textContent.split(' - ')[0] + '.html', '_blank')">詳細ページを開く</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section class="bg-light py-5" id="about">
         <div class="container">
@@ -1416,6 +1442,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="styles/script.js"></script>
 </body>
 </html>
