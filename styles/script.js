@@ -282,14 +282,7 @@ function initializeImageGallery() {
     });
 }
 
-// コースプロファイルデータ
-const COURSE_PROFILE_DATA = {
-    '槍ヶ岳': {
-        "datasets": [{"label": "槍ヶ岳 標高プロファイル", "data": [{"x": 0.0, "y": 1510.0}, {"x": 0.10500000000000001, "y": 1511.3128689300804}, {"x": 0.21000000000000002, "y": 1512.6180339887499}, {"x": 0.315, "y": 1513.9079809994792}, {"x": 0.42000000000000004, "y": 1515.175570504585}, {"x": 0.525, "y": 1516.414213562373}, {"x": 0.63, "y": 1517.6180339887499}, {"x": 0.735, "y": 1518.7820130483767}, {"x": 0.8400000000000001, "y": 1519.9021130325903}, {"x": 0.9450000000000001, "y": 1520.9753766811903}, {"x": 1.05, "y": 1522.0}, {"x": 1.1550000000000002, "y": 1522.9753766811903}, {"x": 1.26, "y": 1523.9021130325903}, {"x": 1.3650000000000002, "y": 1524.7820130483767}, {"x": 1.47, "y": 1525.6180339887499}, {"x": 1.5750000000000002, "y": 1526.414213562373}, {"x": 1.6800000000000002, "y": 1527.175570504585}, {"x": 1.785, "y": 1527.9079809994792}, {"x": 1.8900000000000001, "y": 1528.6180339887499}, {"x": 1.9949999999999999, "y": 1529.3128689300804}, {"x": 2.1, "y": 1530.0}, {"x": 2.1, "y": 1530.0}, {"x": 2.2181818181818183, "y": 1533.5724703977971}, {"x": 2.3363636363636364, "y": 1537.0764679069123}, {"x": 2.4545454545454546, "y": 1540.449066904881}, {"x": 2.5727272727272728, "y": 1543.6379868951547}, {"x": 2.690909090909091, "y": 1546.6058279620065}, {"x": 2.809090909090909, "y": 1549.333100689279}, {"x": 2.9272727272727272, "y": 1551.8198050769727}, {"x": 3.0454545454545454, "y": 1554.0854305412445}, {"x": 3.1636363636363636, "y": 1556.1673769978213}, {"x": 3.2818181818181817, "y": 1558.1179249432516}, {"x": 3.4, "y": 1560.0}, {"x": 3.4, "y": 1560.0}, {"x": 3.5052631578947366, "y": 1564.1454622785266}, {"x": 3.610526315789474, "y": 1568.2639862889123}, {"x": 3.7157894736842105, "y": 1572.3293685687486}, {"x": 3.8210526315789473, "y": 1576.3168552235063}, {"x": 3.9263157894736844, "y": 1580.2038171482495}, {"x": 4.031578947368421, "y": 1583.9703672906278}, {"x": 4.136842105263158, "y": 1587.599903117825}, {"x": 4.242105263157895, "y": 1591.079559490373}, {"x": 4.347368421052631, "y": 1594.400559589619}, {"x": 4.4526315789473685, "y": 1597.558454326461}, {"x": 4.557894736842106, "y": 1600.5532437008992}, {"x": 4.663157894736842, "y": 1603.3893768020355}, {"x": 4.768421052631579, "y": 1606.0756304485224}, {"x": 4.873684210526315, "y": 1608.6248697798283}, {"x": 4.9789473684210535, "y": 1611.0536973287697}, {"x": 5.08421052631579, "y": 1613.382000147696}, {"x": 5.189473684210527, "y": 1615.632407341544}, {"x": 5.294736842105263, "y": 1617.8296728048424}, {"x": 5.4, "y": 1620.0}, {"x": 5.4, "y": 1620.0}, {"x": 5.50909090909091, "y": 1648.6492940552994}, {"x": 5.618181818181818, "y": 1677.1595263647523}, {"x": 5.7272727272727275, "y": 1705.394466078636}, {"x": 5.836363636363637, "y": 1733.2234865105959}, {"x": 5.945454545454545, "y": 1760.5242243202827}, {"x": 6.054545454545455, "y": 1787.1850704780954}, {"x": 6.163636363636364, "y": 1813.1074423031694}, {"x": 6.272727272727273, "y": 1838.2077903224713}, {"x": 6.381818181818182, "y": 1862.4192990971324}, {"x": 6.490909090909091, "y": 1885.693247392103}, {"x": 6.6, "y": 1908.0}, {"x": 6.709090909090909, "y": 1929.3296110284666}, {"x": 6.818181818181818, "y": 1949.6920263698594}, {"x": 6.927272727272728, "y": 1969.1168812315623}, {"x": 7.036363636363636, "y": 1987.6528968486239}, {"x": 7.1454545454545455, "y": 2005.3668886599135}, {"x": 7.254545454545454, "y": 2022.3424061384646}, {"x": 7.363636363636363, "y": 2038.6780319651414}, {"x": 7.472727272727273, "y": 2054.485375169545}, {"x": 7.581818181818182, "y": 2069.8867990920253}, {"x": 7.690909090909091, "y": 2085.012930418936}, {"x": 7.8, "y": 2100.0}, {"x": 7.8, "y": 2100.0}, {"x": 7.916666666666666, "y": 2089.1666666666665}, {"x": 8.033333333333333, "y": 2079.0032063144113}, {"x": 8.15, "y": 2070.0}, {"x": 8.266666666666666, "y": 2062.3365396477443}, {"x": 8.383333333333333, "y": 2055.8333333333335}, {"x": 8.5, "y": 2050.0}, {"x": 8.5, "y": 2050.0}, {"x": 8.613333333333333, "y": 2134.8341006759892}, {"x": 8.726666666666667, "y": 2218.786787711686}, {"x": 8.84, "y": 2301.01516947237}, {"x": 8.953333333333333, "y": 2380.7517147379735}, {"x": 9.066666666666666, "y": 2457.337797500424}, {"x": 9.18, "y": 2530.2524820806298}, {"x": 9.293333333333333, "y": 2599.135290517389}, {"x": 9.406666666666666, "y": 2663.801957184056}, {"x": 9.52, "y": 2724.2524820806298}, {"x": 9.633333333333333, "y": 2780.671130833757}, {"x": 9.746666666666666, "y": 2833.4183814046405}, {"x": 9.86, "y": 2883.01516947237}, {"x": 9.973333333333333, "y": 2930.1201210450195}, {"x": 10.086666666666666, "y": 2975.500767342656}, {"x": 10.2, "y": 3020.0}, {"x": 10.2, "y": 3020.0}, {"x": 10.314285714285713, "y": 3049.7992826830236}, {"x": 10.428571428571429, "y": 3078.223589433774}, {"x": 10.542857142857143, "y": 3104.1702751663374}, {"x": 10.657142857142857, "y": 3127.0274180234805}, {"x": 10.77142857142857, "y": 3146.7950180052026}, {"x": 10.885714285714286, "y": 3164.0849969687383}, {"x": 11.0, "y": 3180.0}], "borderColor": "#2c5aa0", "backgroundColor": "rgba(44, 90, 160, 0.1)", "fill": true, "tension": 0.3, "pointRadius": 0, "pointHoverRadius": 6}],
-        "waypoints": [{"name": "上高地BT", "distance": 0.0, "elevation": 1510, "time": "06:00"}, {"name": "明神池", "distance": 2.1, "elevation": 1530, "time": "07:30"}, {"name": "徳沢ロッヂ", "distance": 3.4, "elevation": 1560, "time": "08:30"}, {"name": "横尾山荘", "distance": 5.4, "elevation": 1620, "time": "09:30"}, {"name": "槍沢ロッヂ", "distance": 7.8, "elevation": 2100, "time": "12:00"}, {"name": "大曲", "distance": 8.5, "elevation": 2050, "time": "13:00"}, {"name": "槍ヶ岳山荘", "distance": 10.2, "elevation": 3020, "time": "15:30"}, {"name": "槍ヶ岳山頂", "distance": 11.0, "elevation": 3180, "time": "16:30"}]
-    }
-    // 他の山のデータは必要に応じて追加
-};
+
 
 // カードに画像検索ボタンとコースボタンを追加
 function addImageGalleryToCard(card, mountainName) {
@@ -348,160 +341,7 @@ function openGoogleImageSearch(searchQuery) {
 }
 
 // コースプロファイルモーダルを表示
-function showCourseProfileModal(mountainName) {
-    // データが存在するかチェック
-    const profileData = COURSE_PROFILE_DATA[mountainName];
-    if (!profileData) {
-        // データがない場合は個別ページに遷移（フォールバック）
-        window.location.href = `${mountainName}.html`;
-        return;
-    }
-    
-    // モーダルタイトルを更新
-    const modalTitle = document.getElementById('courseProfileModalLabel');
-    modalTitle.textContent = `${mountainName} - コースプロファイル`;
-    
-    // チャートコンテナを取得
-    const chartContainer = document.getElementById('modal-chart-container');
-    
-    // 既存のチャートを削除
-    chartContainer.innerHTML = '';
-    
-    // 新しいcanvas要素を作成
-    const canvas = document.createElement('canvas');
-    canvas.id = 'modal-profile-canvas';
-    chartContainer.appendChild(canvas);
-    
-    // Chart.jsでグラフを作成
-    const ctx = canvas.getContext('2d');
-    
-    const config = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: `${mountainName} 標高プロファイル`,
-                data: profileData.datasets[0].data,
-                borderColor: '#2c5aa0',
-                backgroundColor: 'rgba(44, 90, 160, 0.1)',
-                fill: true,
-                tension: 0.3,
-                pointRadius: 0,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: '#ff6b35',
-                borderWidth: 3
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
-                    title: {
-                        display: true,
-                        text: '距離 (km)',
-                        font: {
-                            size: 14,
-                            weight: 'bold'
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: '標高 (m)',
-                        font: {
-                            size: 14,
-                            weight: 'bold'
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: `${mountainName} - コースプロファイル`,
-                    font: {
-                        size: 16,
-                        weight: 'bold'
-                    },
-                    color: '#2c5aa0'
-                },
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(44, 90, 160, 0.9)',
-                    titleColor: 'white',
-                    bodyColor: 'white',
-                    borderColor: '#2c5aa0',
-                    borderWidth: 1,
-                    callbacks: {
-                        title: function(context) {
-                            const point = context[0];
-                            return `距離: ${point.parsed.x.toFixed(1)}km`;
-                        },
-                        label: function(context) {
-                            return `標高: ${context.parsed.y.toFixed(0)}m`;
-                        },
-                        afterLabel: function(context) {
-                            // 主要地点の情報を表示
-                            if (profileData.waypoints) {
-                                const distance = context.parsed.x;
-                                const waypoint = profileData.waypoints.find(wp => 
-                                    Math.abs(wp.distance - distance) < 0.1
-                                );
-                                if (waypoint) {
-                                    return [`地点: ${waypoint.name}`, `時刻: ${waypoint.time}`];
-                                }
-                            }
-                            return '';
-                        }
-                    }
-                }
-            }
-        }
-    };
-    
-    // チャートを作成
-    const chart = new Chart(ctx, config);
-    
-    // 主要地点マーカーを追加
-    if (profileData.waypoints) {
-        const waypointData = profileData.waypoints.map(wp => ({
-            x: wp.distance,
-            y: wp.elevation
-        }));
 
-        chart.data.datasets.push({
-            type: 'scatter',
-            label: '主要地点',
-            data: waypointData,
-            backgroundColor: '#ff6b35',
-            borderColor: '#ff6b35',
-            pointRadius: 6,
-            pointHoverRadius: 8,
-            showLine: false
-        });
-
-        chart.update();
-    }
-    
-    // モーダルを表示
-    const modal = new bootstrap.Modal(document.getElementById('courseProfileModal'));
-    modal.show();
-}
 
 
 
@@ -517,6 +357,12 @@ if ('serviceWorker' in navigator) {
 }
 
 // 全41山のコースプロファイルデータ
+
+
+// コースプロファイル表示関数（修正版）
+
+
+// 全山のコースプロファイルデータ（自動生成）
 const ALL_COURSE_PROFILE_DATA = {
   "富士山": {
     "mountain": "富士山",
@@ -14513,32 +14359,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1000.0
           },
           {
-            "x": 0.1125,
-            "y": 1014.375
+            "x": 0.09999999999999999,
+            "y": 1012.7777777777778
           },
           {
-            "x": 0.225,
-            "y": 1028.75
+            "x": 0.19999999999999998,
+            "y": 1025.5555555555557
           },
           {
-            "x": 0.3375,
-            "y": 1043.125
+            "x": 0.3,
+            "y": 1038.3333333333333
           },
           {
-            "x": 0.45,
-            "y": 1057.5
+            "x": 0.39999999999999997,
+            "y": 1051.111111111111
           },
           {
-            "x": 0.5625,
-            "y": 1071.875
+            "x": 0.5,
+            "y": 1063.888888888889
           },
           {
-            "x": 0.675,
-            "y": 1086.25
+            "x": 0.6,
+            "y": 1076.6666666666667
           },
           {
-            "x": 0.7875,
-            "y": 1100.625
+            "x": 0.7000000000000001,
+            "y": 1089.4444444444443
+          },
+          {
+            "x": 0.7999999999999999,
+            "y": 1102.2222222222222
           },
           {
             "x": 0.9,
@@ -14549,24 +14399,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1115.0
           },
           {
-            "x": 1.0333333333333332,
-            "y": 1139.8333333333333
+            "x": 0.9888888888888889,
+            "y": 1131.5555555555557
+          },
+          {
+            "x": 1.0777777777777777,
+            "y": 1148.111111111111
           },
           {
             "x": 1.1666666666666665,
             "y": 1164.6666666666667
           },
           {
-            "x": 1.3,
-            "y": 1189.5
+            "x": 1.2555555555555555,
+            "y": 1181.2222222222222
+          },
+          {
+            "x": 1.3444444444444446,
+            "y": 1197.7777777777778
           },
           {
             "x": 1.4333333333333331,
             "y": 1214.3333333333333
           },
           {
-            "x": 1.5666666666666667,
-            "y": 1239.1666666666667
+            "x": 1.5222222222222221,
+            "y": 1230.888888888889
+          },
+          {
+            "x": 1.6111111111111112,
+            "y": 1247.4444444444443
           },
           {
             "x": 1.7,
@@ -14577,32 +14439,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1264.0
           },
           {
-            "x": 1.8125,
-            "y": 1284.75
+            "x": 1.8,
+            "y": 1282.4444444444443
           },
           {
-            "x": 1.925,
-            "y": 1305.5
+            "x": 1.9,
+            "y": 1300.888888888889
           },
           {
-            "x": 2.0375,
-            "y": 1326.25
+            "x": 2.0,
+            "y": 1319.3333333333333
           },
           {
-            "x": 2.15,
-            "y": 1347.0
+            "x": 2.1,
+            "y": 1337.7777777777778
           },
           {
-            "x": 2.2625,
-            "y": 1367.75
+            "x": 2.2,
+            "y": 1356.2222222222222
           },
           {
-            "x": 2.375,
-            "y": 1388.5
+            "x": 2.3,
+            "y": 1374.6666666666667
           },
           {
-            "x": 2.4875,
-            "y": 1409.25
+            "x": 2.4,
+            "y": 1393.111111111111
+          },
+          {
+            "x": 2.5,
+            "y": 1411.5555555555557
           },
           {
             "x": 2.6,
@@ -14613,24 +14479,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1430.0
           },
           {
-            "x": 2.7333333333333334,
-            "y": 1459.6666666666667
+            "x": 2.688888888888889,
+            "y": 1449.7777777777778
+          },
+          {
+            "x": 2.7777777777777777,
+            "y": 1469.5555555555557
           },
           {
             "x": 2.8666666666666667,
             "y": 1489.3333333333333
           },
           {
-            "x": 3.0,
-            "y": 1519.0
+            "x": 2.9555555555555557,
+            "y": 1509.111111111111
+          },
+          {
+            "x": 3.0444444444444443,
+            "y": 1528.888888888889
           },
           {
             "x": 3.1333333333333333,
             "y": 1548.6666666666667
           },
           {
-            "x": 3.2666666666666666,
-            "y": 1578.3333333333333
+            "x": 3.2222222222222223,
+            "y": 1568.4444444444443
+          },
+          {
+            "x": 3.311111111111111,
+            "y": 1588.2222222222222
           },
           {
             "x": 3.4,
@@ -14641,32 +14519,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1608.0
           },
           {
-            "x": 3.5124999999999997,
-            "y": 1631.375
+            "x": 3.5,
+            "y": 1628.7777777777778
           },
           {
-            "x": 3.625,
-            "y": 1654.75
+            "x": 3.5999999999999996,
+            "y": 1649.5555555555557
           },
           {
-            "x": 3.7375,
-            "y": 1678.125
+            "x": 3.6999999999999997,
+            "y": 1670.3333333333333
           },
           {
-            "x": 3.8499999999999996,
-            "y": 1701.5
+            "x": 3.8,
+            "y": 1691.111111111111
           },
           {
-            "x": 3.9625,
-            "y": 1724.875
+            "x": 3.9,
+            "y": 1711.888888888889
           },
           {
-            "x": 4.075,
-            "y": 1748.25
+            "x": 4.0,
+            "y": 1732.6666666666667
           },
           {
-            "x": 4.1875,
-            "y": 1771.625
+            "x": 4.1,
+            "y": 1753.4444444444443
+          },
+          {
+            "x": 4.199999999999999,
+            "y": 1774.2222222222222
           },
           {
             "x": 4.3,
@@ -14677,24 +14559,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1795.0
           },
           {
-            "x": 4.433333333333334,
-            "y": 1827.3333333333333
+            "x": 4.388888888888888,
+            "y": 1816.5555555555557
+          },
+          {
+            "x": 4.477777777777778,
+            "y": 1838.111111111111
           },
           {
             "x": 4.566666666666666,
             "y": 1859.6666666666667
           },
           {
-            "x": 4.699999999999999,
-            "y": 1892.0
+            "x": 4.655555555555555,
+            "y": 1881.2222222222222
+          },
+          {
+            "x": 4.7444444444444445,
+            "y": 1902.7777777777778
           },
           {
             "x": 4.833333333333333,
             "y": 1924.3333333333333
           },
           {
-            "x": 4.966666666666667,
-            "y": 1956.6666666666667
+            "x": 4.922222222222222,
+            "y": 1945.888888888889
+          },
+          {
+            "x": 5.011111111111111,
+            "y": 1967.4444444444443
           },
           {
             "x": 5.1,
@@ -14705,32 +14599,36 @@ const ALL_COURSE_PROFILE_DATA = {
             "y": 1989.0
           },
           {
-            "x": 5.2124999999999995,
-            "y": 2014.25
+            "x": 5.199999999999999,
+            "y": 2011.4444444444443
           },
           {
-            "x": 5.324999999999999,
-            "y": 2039.5
+            "x": 5.3,
+            "y": 2033.888888888889
           },
           {
-            "x": 5.4375,
-            "y": 2064.75
+            "x": 5.3999999999999995,
+            "y": 2056.3333333333335
           },
           {
-            "x": 5.55,
-            "y": 2090.0
+            "x": 5.5,
+            "y": 2078.777777777778
           },
           {
-            "x": 5.6625,
-            "y": 2115.25
+            "x": 5.6,
+            "y": 2101.222222222222
           },
           {
-            "x": 5.775,
-            "y": 2140.5
+            "x": 5.7,
+            "y": 2123.6666666666665
           },
           {
-            "x": 5.8875,
-            "y": 2165.75
+            "x": 5.8,
+            "y": 2146.1111111111113
+          },
+          {
+            "x": 5.9,
+            "y": 2168.5555555555557
           },
           {
             "x": 6.0,
@@ -21752,11 +21650,25 @@ const ALL_COURSE_PROFILE_DATA = {
   }
 };
 
-// コースプロファイル表示関数（修正版）
-async function showCourseProfile(mountainName) {
+// コースプロファイル表示関数（完全修正版）
+function showCourseProfile(mountainName, event) {
+    // イベントバブリングを完全に停止
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    }
+    
+    console.log('🔧 showCourseProfile 呼び出し:', mountainName);
+    
     const modal = document.getElementById('courseProfileModal');
     const modalTitle = document.getElementById('courseProfileModalLabel');
     const chartContainer = document.getElementById('modal-chart-container');
+    
+    if (!modal || !modalTitle || !chartContainer) {
+        console.error('❌ モーダル要素が見つかりません');
+        return false;
+    }
     
     // モーダルタイトル更新
     modalTitle.textContent = `${mountainName} - コースプロファイル`;
@@ -21765,7 +21677,7 @@ async function showCourseProfile(mountainName) {
     const profileData = ALL_COURSE_PROFILE_DATA[mountainName];
     
     if (!profileData) {
-        // データがない場合の表示
+        console.warn('⚠️ プロファイルデータが見つかりません:', mountainName);
         chartContainer.innerHTML = `
             <div class="alert alert-warning">
                 <h6>⚠️ データ準備中</h6>
@@ -21775,217 +21687,217 @@ async function showCourseProfile(mountainName) {
                 </a>
             </div>
         `;
-        const modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
-        return;
-    }
-    
-    // 既存のチャートをクリア
-    chartContainer.innerHTML = '';
-    
-    // 統計情報を表示
-    const statsDiv = document.createElement('div');
-    statsDiv.className = 'mb-3 p-3 bg-light rounded';
-    statsDiv.innerHTML = `
-        <div class="row text-center">
-            <div class="col-3">
-                <strong>${profileData.stats.total_distance}</strong><br>
-                <small class="text-muted">総距離(km)</small>
+    } else {
+        // チャートコンテナをクリア
+        chartContainer.innerHTML = '';
+        
+        // 統計情報を表示
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'mb-3 p-3 bg-light rounded';
+        statsDiv.innerHTML = `
+            <div class="row text-center">
+                <div class="col-3">
+                    <strong>${profileData.stats.total_distance}</strong><br>
+                    <small class="text-muted">総距離(km)</small>
+                </div>
+                <div class="col-3">
+                    <strong>+${profileData.stats.elevation_gain}</strong><br>
+                    <small class="text-muted">獲得標高(m)</small>
+                </div>
+                <div class="col-3">
+                    <strong>${profileData.stats.summit_elevation}</strong><br>
+                    <small class="text-muted">標高(m)</small>
+                </div>
+                <div class="col-3">
+                    <strong>${profileData.waypoints ? profileData.waypoints.length : 0}</strong><br>
+                    <small class="text-muted">地点数</small>
+                </div>
             </div>
-            <div class="col-3">
-                <strong>+${profileData.stats.elevation_gain}</strong><br>
-                <small class="text-muted">獲得標高(m)</small>
-            </div>
-            <div class="col-3">
-                <strong>${profileData.stats.summit_elevation}</strong><br>
-                <small class="text-muted">標高(m)</small>
-            </div>
-            <div class="col-3">
-                <strong>${profileData.waypoints ? profileData.waypoints.length : 0}</strong><br>
-                <small class="text-muted">地点数</small>
-            </div>
-        </div>
-    `;
-    chartContainer.appendChild(statsDiv);
-    
-    // Chart.js用のキャンバス作成
-    const canvas = document.createElement('canvas');
-    canvas.id = 'profile-chart-canvas';
-    canvas.style.height = '300px';
-    chartContainer.appendChild(canvas);
-    
-    // Chart.jsが読み込まれているかチェック
-    if (typeof Chart === 'undefined') {
-        chartContainer.innerHTML = `
-            <div class="alert alert-danger">
+        `;
+        chartContainer.appendChild(statsDiv);
+        
+        // Chart.jsが利用可能かチェック
+        if (typeof Chart === 'undefined') {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger';
+            errorDiv.innerHTML = `
                 <h6>❌ Chart.jsが読み込まれていません</h6>
                 <p>コースプロファイルの表示にはChart.jsライブラリが必要です。</p>
-            </div>
-        `;
-        const modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
-        return;
-    }
-    
-    // Chart.jsでグラフを作成
-    const ctx = canvas.getContext('2d');
-    
-    const chartConfig = {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: `${mountainName} 標高プロファイル`,
-                data: profileData.datasets[0].data,
-                borderColor: '#2c5aa0',
-                backgroundColor: 'rgba(44, 90, 160, 0.1)',
-                fill: true,
-                tension: 0.3,
-                pointRadius: 0,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: '#ff6b35',
-                borderWidth: 3
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
-                    title: {
-                        display: true,
-                        text: '距離 (km)',
-                        font: {
-                            size: 14,
-                            weight: 'bold'
+            `;
+            chartContainer.appendChild(errorDiv);
+        } else {
+            // Chart.js用のキャンバス作成
+            const canvas = document.createElement('canvas');
+            canvas.id = 'profile-chart-canvas';
+            canvas.style.height = '300px';
+            chartContainer.appendChild(canvas);
+            
+            // Chart.jsでグラフを作成
+            const ctx = canvas.getContext('2d');
+            
+            const chartConfig = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: `${mountainName} 標高プロファイル`,
+                        data: profileData.datasets[0].data,
+                        borderColor: '#2c5aa0',
+                        backgroundColor: 'rgba(44, 90, 160, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#ff6b35',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: '距離 (km)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: '標高 (m)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
                         }
                     },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: '標高 (m)',
-                        font: {
-                            size: 14,
-                            weight: 'bold'
-                        }
-                    },
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.1)'
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: `${mountainName} - コースプロファイル`,
-                    font: {
-                        size: 16,
-                        weight: 'bold'
-                    },
-                    color: '#2c5aa0'
-                },
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(44, 90, 160, 0.9)',
-                    titleColor: 'white',
-                    bodyColor: 'white',
-                    borderColor: '#2c5aa0',
-                    borderWidth: 1,
-                    callbacks: {
-                        title: function(context) {
-                            const point = context[0];
-                            return `距離: ${point.parsed.x.toFixed(1)}km`;
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `${mountainName} - コースプロファイル`,
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: '#2c5aa0'
                         },
-                        label: function(context) {
-                            return `標高: ${context.parsed.y.toFixed(0)}m`;
+                        legend: {
+                            display: false
                         },
-                        afterLabel: function(context) {
-                            // 主要地点の情報を表示
-                            if (profileData.waypoints) {
-                                const distance = context.parsed.x;
-                                const waypoint = profileData.waypoints.find(wp => 
-                                    Math.abs(wp.distance - distance) < 0.2
-                                );
-                                if (waypoint) {
-                                    return [`地点: ${waypoint.name}`, `時刻: ${waypoint.time}`];
+                        tooltip: {
+                            backgroundColor: 'rgba(44, 90, 160, 0.9)',
+                            titleColor: 'white',
+                            bodyColor: 'white',
+                            borderColor: '#2c5aa0',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: function(context) {
+                                    const point = context[0];
+                                    return `距離: ${point.parsed.x.toFixed(1)}km`;
+                                },
+                                label: function(context) {
+                                    return `標高: ${context.parsed.y.toFixed(0)}m`;
+                                },
+                                afterLabel: function(context) {
+                                    const distance = context.parsed.x;
+                                    const waypoint = profileData.waypoints?.find(wp => 
+                                        Math.abs(wp.distance - distance) < 0.2
+                                    );
+                                    if (waypoint) {
+                                        return [`地点: ${waypoint.name}`, `時刻: ${waypoint.time}`];
+                                    }
+                                    return '';
                                 }
                             }
-                            return '';
                         }
                     }
                 }
+            };
+            
+            // チャートを作成
+            const chart = new Chart(ctx, chartConfig);
+            
+            // 主要地点マーカーを追加
+            if (profileData.waypoints) {
+                const waypointData = profileData.waypoints.map(wp => ({
+                    x: wp.distance,
+                    y: wp.elevation
+                }));
+
+                chart.data.datasets.push({
+                    type: 'scatter',
+                    label: '主要地点',
+                    data: waypointData,
+                    backgroundColor: '#ff6b35',
+                    borderColor: '#ff6b35',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    showLine: false
+                });
+
+                chart.update();
             }
         }
-    };
-    
-    // チャートを作成
-    const chart = new Chart(ctx, chartConfig);
-    
-    // 主要地点マーカーを追加
-    if (profileData.waypoints) {
-        const waypointData = profileData.waypoints.map(wp => ({
-            x: wp.distance,
-            y: wp.elevation
-        }));
-
-        chart.data.datasets.push({
-            type: 'scatter',
-            label: '主要地点',
-            data: waypointData,
-            backgroundColor: '#ff6b35',
-            borderColor: '#ff6b35',
-            pointRadius: 6,
-            pointHoverRadius: 8,
-            showLine: false
-        });
-
-        chart.update();
-    }
-    
-    // 主要地点リストを表示
-    if (profileData.waypoints) {
-        const waypointsDiv = document.createElement('div');
-        waypointsDiv.className = 'mt-3';
-        waypointsDiv.innerHTML = `
-            <h6>📍 主要地点</h6>
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>地点名</th>
-                            <th>距離</th>
-                            <th>標高</th>
-                            <th>時刻目安</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${profileData.waypoints.map(wp => `
+        
+        // 主要地点リストを表示
+        if (profileData.waypoints) {
+            const waypointsDiv = document.createElement('div');
+            waypointsDiv.className = 'mt-3';
+            waypointsDiv.innerHTML = `
+                <h6>📍 主要地点</h6>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
                             <tr>
-                                <td>${wp.name}</td>
-                                <td>${wp.distance}km</td>
-                                <td>${wp.elevation}m</td>
-                                <td>${wp.time}</td>
+                                <th>地点名</th>
+                                <th>距離</th>
+                                <th>標高</th>
+                                <th>時刻目安</th>
                             </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `;
-        chartContainer.appendChild(waypointsDiv);
+                        </thead>
+                        <tbody>
+                            ${profileData.waypoints.map(wp => `
+                                <tr>
+                                    <td>${wp.name}</td>
+                                    <td>${wp.distance}km</td>
+                                    <td>${wp.elevation}m</td>
+                                    <td>${wp.time}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            chartContainer.appendChild(waypointsDiv);
+        }
     }
     
     // モーダルを表示
-    const modalInstance = new bootstrap.Modal(modal);
-    modalInstance.show();
+    try {
+        const modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+        console.log('✅ モーダル表示成功:', mountainName);
+    } catch (error) {
+        console.error('❌ モーダル表示エラー:', error);
+    }
+    
+    // イベントの完全停止を確認
+    return false;
 }
