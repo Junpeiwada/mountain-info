@@ -21901,3 +21901,276 @@ function showCourseProfile(mountainName, event) {
     // イベントの完全停止を確認
     return false;
 }
+
+// カードナビゲーション機能（イベント制御付き）
+function navigateToMountain(mountainName, event) {
+    // プロファイルボタンからのイベントかチェック
+    if (event && event.target) {
+        const target = event.target;
+        const isProfileButton = target.closest('button[data-bs-target="#courseProfileModal"]');
+        
+        // プロファイルボタンの場合は遷移しない
+        if (isProfileButton) {
+            console.log('🔘 プロファイルボタンクリック - 遷移キャンセル');
+            return false;
+        }
+    }
+    
+    console.log('🔄 カードクリック - 詳細画面へ遷移:', mountainName);
+    
+    // 詳細画面に遷移
+    window.location.href = `${mountainName}.html`;
+    return false;
+}
+
+// showCourseProfile 関数を修正（イベント制御強化）
+function showCourseProfile(mountainName, event) {
+    // イベントバブリングを完全に停止
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+    }
+    
+    console.log('📊 プロファイルボタンクリック:', mountainName);
+    
+    const modal = document.getElementById('courseProfileModal');
+    const modalTitle = document.getElementById('courseProfileModalLabel');
+    const chartContainer = document.getElementById('modal-chart-container');
+    
+    if (!modal || !modalTitle || !chartContainer) {
+        console.error('❌ モーダル要素が見つかりません');
+        return false;
+    }
+    
+    // モーダルタイトル更新
+    modalTitle.textContent = `${mountainName} - コースプロファイル`;
+    
+    // プロファイルデータを取得
+    const profileData = ALL_COURSE_PROFILE_DATA[mountainName];
+    
+    if (!profileData) {
+        console.warn('⚠️ プロファイルデータが見つかりません:', mountainName);
+        chartContainer.innerHTML = `
+            <div class="alert alert-warning">
+                <h6>⚠️ データ準備中</h6>
+                <p>${mountainName}のコースプロファイルデータを準備中です。</p>
+                <a href="${mountainName}.html" class="btn btn-outline-primary btn-sm" target="_blank">
+                    山の詳細ページで確認 →
+                </a>
+            </div>
+        `;
+    } else {
+        // チャートコンテナをクリア
+        chartContainer.innerHTML = '';
+        
+        // 統計情報を表示
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'mb-3 p-3 bg-light rounded';
+        statsDiv.innerHTML = `
+            <div class="row text-center">
+                <div class="col-3">
+                    <strong>${profileData.stats.total_distance}</strong><br>
+                    <small class="text-muted">総距離(km)</small>
+                </div>
+                <div class="col-3">
+                    <strong>+${profileData.stats.elevation_gain}</strong><br>
+                    <small class="text-muted">獲得標高(m)</small>
+                </div>
+                <div class="col-3">
+                    <strong>${profileData.stats.summit_elevation}</strong><br>
+                    <small class="text-muted">標高(m)</small>
+                </div>
+                <div class="col-3">
+                    <strong>${profileData.waypoints ? profileData.waypoints.length : 0}</strong><br>
+                    <small class="text-muted">地点数</small>
+                </div>
+            </div>
+        `;
+        chartContainer.appendChild(statsDiv);
+        
+        // Chart.jsが利用可能かチェック
+        if (typeof Chart === 'undefined') {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger';
+            errorDiv.innerHTML = `
+                <h6>❌ Chart.jsが読み込まれていません</h6>
+                <p>コースプロファイルの表示にはChart.jsライブラリが必要です。</p>
+            `;
+            chartContainer.appendChild(errorDiv);
+        } else {
+            // Chart.js用のキャンバス作成
+            const canvas = document.createElement('canvas');
+            canvas.id = 'profile-chart-canvas';
+            canvas.style.height = '300px';
+            chartContainer.appendChild(canvas);
+            
+            // Chart.jsでグラフを作成
+            const ctx = canvas.getContext('2d');
+            
+            const chartConfig = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: `${mountainName} 標高プロファイル`,
+                        data: profileData.datasets[0].data,
+                        borderColor: '#2c5aa0',
+                        backgroundColor: 'rgba(44, 90, 160, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#ff6b35',
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: '距離 (km)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: '標高 (m)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `${mountainName} - コースプロファイル`,
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: '#2c5aa0'
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(44, 90, 160, 0.9)',
+                            titleColor: 'white',
+                            bodyColor: 'white',
+                            borderColor: '#2c5aa0',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: function(context) {
+                                    const point = context[0];
+                                    return `距離: ${point.parsed.x.toFixed(1)}km`;
+                                },
+                                label: function(context) {
+                                    return `標高: ${context.parsed.y.toFixed(0)}m`;
+                                },
+                                afterLabel: function(context) {
+                                    const distance = context.parsed.x;
+                                    const waypoint = profileData.waypoints?.find(wp => 
+                                        Math.abs(wp.distance - distance) < 0.2
+                                    );
+                                    if (waypoint) {
+                                        return [`地点: ${waypoint.name}`, `時刻: ${waypoint.time}`];
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // チャートを作成
+            const chart = new Chart(ctx, chartConfig);
+            
+            // 主要地点マーカーを追加
+            if (profileData.waypoints) {
+                const waypointData = profileData.waypoints.map(wp => ({
+                    x: wp.distance,
+                    y: wp.elevation
+                }));
+
+                chart.data.datasets.push({
+                    type: 'scatter',
+                    label: '主要地点',
+                    data: waypointData,
+                    backgroundColor: '#ff6b35',
+                    borderColor: '#ff6b35',
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    showLine: false
+                });
+
+                chart.update();
+            }
+        }
+        
+        // 主要地点リストを表示
+        if (profileData.waypoints) {
+            const waypointsDiv = document.createElement('div');
+            waypointsDiv.className = 'mt-3';
+            waypointsDiv.innerHTML = `
+                <h6>📍 主要地点</h6>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>地点名</th>
+                                <th>距離</th>
+                                <th>標高</th>
+                                <th>時刻目安</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${profileData.waypoints.map(wp => `
+                                <tr>
+                                    <td>${wp.name}</td>
+                                    <td>${wp.distance}km</td>
+                                    <td>${wp.elevation}m</td>
+                                    <td>${wp.time}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            chartContainer.appendChild(waypointsDiv);
+        }
+    }
+    
+    // モーダルを表示
+    try {
+        const modalInstance = new bootstrap.Modal(modal);
+        modalInstance.show();
+        console.log('✅ モーダル表示成功:', mountainName);
+    } catch (error) {
+        console.error('❌ モーダル表示エラー:', error);
+    }
+    
+    // イベントの完全停止
+    return false;
+}
