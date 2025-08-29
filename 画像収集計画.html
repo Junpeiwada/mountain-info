@@ -86,10 +86,10 @@
 </ol>
 <h2 id="_3">📸 画像収集方法</h2>
 <h3 id="method-1">Method 1: 官公庁・観光協会サイトからの収集</h3>
-<div class="codehilite"><pre><span></span><code>信頼度: ★★★★★
+<pre class="codehilite"><code>信頼度: ★★★★★
 著作権: 多くが利用許可あり
 品質: 高品質・プロ撮影
-</code></pre></div>
+</code></pre>
 
 <p><strong>収集手順:</strong>
 1. 各自治体・観光協会の公式サイトから検索
@@ -97,20 +97,20 @@
 3. 出典・クレジット情報を記録
 4. 画像をダウンロード・リサイズ</p>
 <h3 id="method-2">Method 2: 登山専門サイトからの収集</h3>
-<div class="codehilite"><pre><span></span><code>信頼度: ★★★★☆
+<pre class="codehilite"><code>信頼度: ★★★★☆
 著作権: 要確認・許可申請
 品質: 実際の登山者による撮影
-</code></pre></div>
+</code></pre>
 
 <p><strong>収集手順:</strong>
 1. ヤマケイオンライン、YAMAPなどで検索
 2. 著作権者に利用許可を申請
 3. 出典情報を詳細に記録</p>
 <h3 id="method-3-creative-commons">Method 3: Creative Commons画像の活用</h3>
-<div class="codehilite"><pre><span></span><code>信頼度: ★★★☆☆
+<pre class="codehilite"><code>信頼度: ★★★☆☆
 著作権: CC規約に従い利用可能
 品質: 様々（要選別）
-</code></pre></div>
+</code></pre>
 
 <h2 id="_4">🏔️ 各山の具体的収集計画</h2>
 <h3 id="_5">奥穂高岳</h3>
@@ -165,39 +165,39 @@
 - 甲府盆地俯瞰</p>
 <h2 id="_10">📝 出典・クレジット記載方式</h2>
 <h3 id="_11">画像の出典情報記載例</h3>
-<div class="codehilite"><pre><span></span><code><span class="gu">## 絶景ポイント・撮影スポット</span>
+<pre class="codehilite"><code class="language-markdown">## 絶景ポイント・撮影スポット
 
-<span class="gu">### 山頂からの景色</span>
-![<span class="nt">奥穂高岳山頂からの槍ヶ岳</span>](<span class="na">images/奥穂高岳_山頂_槍ヶ岳方向_01.jpg</span>)
-<span class="ge">*出典: 穂高岳山荘公式サイト (https://www.hotakadakesanso.com/)*</span>
-<span class="ge">*撮影時期: 2024年9月 / 使用許可: 観光利用許可済み*</span>
+### 山頂からの景色
+![奥穂高岳山頂からの槍ヶ岳](images/奥穂高岳_山頂_槍ヶ岳方向_01.jpg)
+*出典: 穂高岳山荘公式サイト (https://www.hotakadakesanso.com/)*
+*撮影時期: 2024年9月 / 使用許可: 観光利用許可済み*
 
-![<span class="nt">奥穂高岳山頂からのパノラマ</span>](<span class="na">images/奥穂高岳_山頂_パノラマ_01.jpg</span>)
-<span class="ge">*出典: 環境省 中部山岳国立公園 (https://www.env.go.jp/)*</span>
-<span class="ge">*撮影時期: 2024年7月 / ライセンス: パブリックドメイン*</span>
-</code></pre></div>
+![奥穂高岳山頂からのパノラマ](images/奥穂高岳_山頂_パノラマ_01.jpg)
+*出典: 環境省 中部山岳国立公園 (https://www.env.go.jp/)*
+*撮影時期: 2024年7月 / ライセンス: パブリックドメイン*
+</code></pre>
 
 <h3 id="json">JSON形式での画像メタデータ管理</h3>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;image_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;okuhodaka_summit_yariga_01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳_山頂_槍ヶ岳方向_01.jpg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;山頂&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;direction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;槍ヶ岳方向&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;website&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;穂高岳山荘公式サイト&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.hotakadakesanso.com/&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;観光利用許可&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;date_taken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-09&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;photographer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;穂高岳山荘&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;permission&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;granted&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-json">{
+  &quot;image_id&quot;: &quot;okuhodaka_summit_yariga_01&quot;,
+  &quot;filename&quot;: &quot;奥穂高岳_山頂_槍ヶ岳方向_01.jpg&quot;,
+  &quot;mountain&quot;: &quot;奥穂高岳&quot;, 
+  &quot;location&quot;: &quot;山頂&quot;,
+  &quot;direction&quot;: &quot;槍ヶ岳方向&quot;,
+  &quot;source&quot;: {
+    &quot;website&quot;: &quot;穂高岳山荘公式サイト&quot;,
+    &quot;url&quot;: &quot;https://www.hotakadakesanso.com/&quot;,
+    &quot;license&quot;: &quot;観光利用許可&quot;,
+    &quot;date_taken&quot;: &quot;2024-09&quot;,
+    &quot;photographer&quot;: &quot;穂高岳山荘&quot;,
+    &quot;permission&quot;: &quot;granted&quot;
+  }
+}
+</code></pre>
 
 <h2 id="_12">🔧 技術的実装</h2>
 <h3 id="_13">ファイル構造</h3>
-<div class="codehilite"><pre><span></span><code>共通資源/images/
+<pre class="codehilite"><code>共通資源/images/
 ├── 奥穂高岳/
 │   ├── 山頂_槍ヶ岳方向_01.jpg
 │   ├── 山頂_北穂高方向_01.jpg  
@@ -206,7 +206,7 @@
 ├── 立山/
 ├── 木曽駒ヶ岳/
 └── 北岳/
-</code></pre></div>
+</code></pre>
 
 <h3 id="_14">画像最適化</h3>
 <ul>

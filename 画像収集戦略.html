@@ -110,76 +110,76 @@
 <h2 id="_5">📸 推奨画像収集プロセス</h2>
 <h3 id="1">フェーズ1: 最も安全なソースから開始</h3>
 <h4 id="1_1">1. 環境省国立公園サイトから収集</h4>
-<div class="codehilite"><pre><span></span><code><span class="err">対象</span><span class="o">:</span><span class="w"> </span><span class="err">中部山岳国立公園、南アルプス国立公園</span>
-<span class="err">方法</span><span class="o">:</span><span class="w"> </span><span class="err">手動検索・ダウンロード</span>
-<span class="err">出典</span><span class="o">:</span><span class="w"> </span><span class="err">必ず記載</span>
-<span class="err">確実性</span><span class="o">:</span><span class="w"> </span><span class="err">★★★★★</span>
-</code></pre></div>
+<pre class="codehilite"><code>対象: 中部山岳国立公園、南アルプス国立公園
+方法: 手動検索・ダウンロード
+出典: 必ず記載
+確実性: ★★★★★
+</code></pre>
 
 <h4 id="2">2. フリー素材サイトから収集</h4>
-<div class="codehilite"><pre><span></span><code><span class="err">対象</span><span class="o">:</span><span class="w"> </span><span class="err">一般的な山の風景写真</span>
-<span class="err">方法</span><span class="o">:</span><span class="w"> </span><span class="err">キーワード検索「奥穂高岳」「槍ヶ岳」など</span>
-<span class="err">確実性</span><span class="o">:</span><span class="w"> </span><span class="err">★★★★☆</span>
-</code></pre></div>
+<pre class="codehilite"><code>対象: 一般的な山の風景写真
+方法: キーワード検索「奥穂高岳」「槍ヶ岳」など
+確実性: ★★★★☆
+</code></pre>
 
 <h3 id="2_1">フェーズ2: 補完的収集</h3>
 <h4 id="3">3. 県・市観光サイトから収集</h4>
-<div class="codehilite"><pre><span></span><code><span class="err">対象</span><span class="o">:</span><span class="w"> </span><span class="err">地域特化の景色写真</span>
-<span class="err">方法</span><span class="o">:</span><span class="w"> </span><span class="err">利用規約確認後に収集</span>
-<span class="err">確実性</span><span class="o">:</span><span class="w"> </span><span class="err">★★★☆☆</span>
-</code></pre></div>
+<pre class="codehilite"><code>対象: 地域特化の景色写真
+方法: 利用規約確認後に収集
+確実性: ★★★☆☆
+</code></pre>
 
 <h2 id="_6">🛠️ 技術実装計画</h2>
 <h3 id="_7">画像収集自動化スクリプト</h3>
-<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SafeImageCollector</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">safe_sources</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;env_go_jp&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;base_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.env.go.jp/&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;PDL1.0&quot;</span><span class="p">,</span> 
-                <span class="s2">&quot;attribution_required&quot;</span><span class="p">:</span> <span class="kc">True</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;pakutaso&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;base_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.pakutaso.com/&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;Commercial OK&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;attribution_required&quot;</span><span class="p">:</span> <span class="kc">False</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+<pre class="codehilite"><code class="language-python">class SafeImageCollector:
+    def __init__(self):
+        self.safe_sources = {
+            &quot;env_go_jp&quot;: {
+                &quot;base_url&quot;: &quot;https://www.env.go.jp/&quot;,
+                &quot;license&quot;: &quot;PDL1.0&quot;, 
+                &quot;attribution_required&quot;: True
+            },
+            &quot;pakutaso&quot;: {
+                &quot;base_url&quot;: &quot;https://www.pakutaso.com/&quot;,
+                &quot;license&quot;: &quot;Commercial OK&quot;,
+                &quot;attribution_required&quot;: False
+            }
+        }
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">verify_license</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">source_type</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;ライセンス確認とメタデータ記録&quot;&quot;&quot;</span>
-        <span class="k">pass</span>
+    def verify_license(self, url, source_type):
+        &quot;&quot;&quot;ライセンス確認とメタデータ記録&quot;&quot;&quot;
+        pass
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">collect_with_attribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_term</span><span class="p">,</span> <span class="n">mountain_name</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;出典情報付きで画像収集&quot;&quot;&quot;</span>
-        <span class="k">pass</span>
-</code></pre></div>
+    def collect_with_attribution(self, search_term, mountain_name):
+        &quot;&quot;&quot;出典情報付きで画像収集&quot;&quot;&quot;
+        pass
+</code></pre>
 
 <h3 id="_8">画像メタデータ管理</h3>
-<div class="codehilite"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;image_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;okuhodaka_summit_view_01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳_山頂景色_01.jpg&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;山頂景色&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳山頂から見た槍ヶ岳方向の景色&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;website&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;環境省 中部山岳国立公園&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;original_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.env.go.jp/park/chubu/...&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PDL1.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;attribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;「中部山岳国立公園」（環境省）&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;download_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-08-29&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;commercial_use&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;technical&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;original_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1920x1080&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;web_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1200x675&quot;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">    </span><span class="nt">&quot;thumbnail_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;400x225&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPEG&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;quality&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="codehilite"><code class="language-json">{
+  &quot;image_id&quot;: &quot;okuhodaka_summit_view_01&quot;,
+  &quot;filename&quot;: &quot;奥穂高岳_山頂景色_01.jpg&quot;,
+  &quot;mountain&quot;: &quot;奥穂高岳&quot;,
+  &quot;type&quot;: &quot;山頂景色&quot;,
+  &quot;description&quot;: &quot;奥穂高岳山頂から見た槍ヶ岳方向の景色&quot;,
+  &quot;source&quot;: {
+    &quot;website&quot;: &quot;環境省 中部山岳国立公園&quot;,
+    &quot;original_url&quot;: &quot;https://www.env.go.jp/park/chubu/...&quot;,
+    &quot;license&quot;: &quot;PDL1.0&quot;,
+    &quot;attribution&quot;: &quot;「中部山岳国立公園」（環境省）&quot;,
+    &quot;download_date&quot;: &quot;2025-08-29&quot;,
+    &quot;commercial_use&quot;: true,
+    &quot;verified&quot;: true
+  },
+  &quot;technical&quot;: {
+    &quot;original_size&quot;: &quot;1920x1080&quot;,
+    &quot;web_size&quot;: &quot;1200x675&quot;, 
+    &quot;thumbnail_size&quot;: &quot;400x225&quot;,
+    &quot;format&quot;: &quot;JPEG&quot;,
+    &quot;quality&quot;: 85
+  }
+}
+</code></pre>
 
 <h2 id="_9">🎯 具体的な収集計画</h2>
 <h3 id="5-8">対象画像（各山5-8枚）</h3>
@@ -222,10 +222,10 @@
 <li><strong>削除要請対応準備</strong> - 即座に対応できる体制</li>
 </ol>
 <h3 id="_12">実装優先度</h3>
-<div class="codehilite"><pre><span></span><code><span class="err">優先度</span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="err">環境省サイトからの収集（リスク最小）</span>
-<span class="err">優先度</span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="err">フリー素材サイトから収集（リスク小）</span>
-<span class="err">優先度</span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="err">観光協会サイトから収集（要確認）</span>
-</code></pre></div>
+<pre class="codehilite"><code>優先度1: 環境省サイトからの収集（リスク最小）
+優先度2: フリー素材サイトから収集（リスク小）
+優先度3: 観光協会サイトから収集（要確認）
+</code></pre>
 
 <hr />
 <p><em>作成日: 2025-08-29</em></p>
