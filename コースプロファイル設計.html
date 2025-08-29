@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コースプロファイル（標高グラフ）設計書 - 日本アルプス登山情報</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏔️ 日本アルプス登山情報</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">ホーム</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#search">検索</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            山域別
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#north">北アルプス</a></li>
+                            <li><a class="dropdown-item" href="#central">中央アルプス</a></li>
+                            <li><a class="dropdown-item" href="#south">南アルプス</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- 山の基本情報カード -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="mb-0">コースプロファイル（標高グラフ）設計書</h1>
+                        <small>不明 - </small>
+                    </div>
+                    <div class="card-header bg-light text-dark">
+                        <p class="mb-0 fw-bold">🏔️ コースプロファイル（標高グラフ）設計書の魅力を発見しよう</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>標高:</strong><br>
+                                <span class="h5 text-primary"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>難易度:</strong><br>
+                                <span class="badge bg-secondary"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>体力度:</strong><br>
+                                ☆☆☆☆☆
+                            </div>
+                            <div class="col-md-3">
+                                <strong>技術度:</strong><br>
+                                ☆☆☆☆☆
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- メインコンテンツ -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="mountain-content">
+                    <h1 id="_1">コースプロファイル（標高グラフ）設計書</h1>
+<h2 id="_2">🎯 実装方針</h2>
+<h3 id="_3">データ収集の現実的なアプローチ</h3>
+<p>調査の結果、以下の制約が判明：
+- <strong>YAMAP</strong>: 公開API無し、個人用のGPXダウンロードは可能だが限定的
+- <strong>国土地理院DEM</strong>: 手動ダウンロード方式、自動化困難
+- <strong>ヤマレコ</strong>: 公開API無し</p>
+<p><strong>→ 手動データ収集 + 推定データ作成のハイブリッドアプローチを採用</strong></p>
+<h2 id="_4">📊 実装戦略</h2>
+<h3 id="1">フェーズ1: 基本データの手動収集</h3>
+<p>公開情報と公式データから主要地点の標高・距離を収集</p>
+<h3 id="2">フェーズ2: データ補完システム</h3>
+<p>地点間の標高変化を推定・補完するアルゴリズム</p>
+<h3 id="3">フェーズ3: インタラクティブグラフ</h3>
+<p>Chart.js使用のWebブラウザ表示</p>
+<h2 id="5">🗻 対象5山のコースプロファイル設計</h2>
+<h3 id="1_1">1. 奥穂高岳（上高地〜涸沢経由）</h3>
+<p><strong>主要地点データ</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;上高地〜涸沢経由&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_elevation_gain&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1580</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;waypoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;上高地BT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1510</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;06:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;明神池&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1530</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;07:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;徳沢ロッヂ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1560</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;横尾山荘&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1620</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;本谷橋&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1850</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;涸沢ヒュッテ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ザイテングラード&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2800</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;奥穂高岳山頂&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3190</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15:00&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="2_1">2. 槍ヶ岳（上高地〜槍沢経由）</h3>
+<p><strong>主要地点データ</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;槍ヶ岳&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;上高地〜槍沢経由&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">11.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_elevation_gain&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1670</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;waypoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;上高地BT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1510</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;06:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;明神池&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1530</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;07:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;徳沢ロッヂ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1560</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;横尾山荘&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1620</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;槍沢ロッヂ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2100</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;大曲&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2050</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;13:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;槍ヶ岳山荘&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3020</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;槍ヶ岳山頂&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">11.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3180</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;16:30&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="3_1">3. 立山/雄山（室堂〜一ノ越経由）</h3>
+<p><strong>主要地点データ</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;立山（雄山）&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;室堂〜一ノ越経由&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;total_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_elevation_gain&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">583</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;waypoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;室堂ターミナル&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2450</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;みくりが池&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2405</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:15&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;一ノ越&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2700</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雄山神社&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2992</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:40&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;雄山山頂&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3003</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10:00&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="4">4. 木曽駒ヶ岳（千畳敷経由）</h3>
+<p><strong>主要地点データ</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;木曽駒ヶ岳&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;千畳敷経由&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_elevation_gain&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">344</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;waypoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;千畳敷駅&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2612</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;八丁坂取付&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2650</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:15&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;乗越浄土&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2850</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中岳&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2925</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;木曽駒ヶ岳山頂&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2956</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10:30&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="5_1">5. 北岳（広河原〜白根御池経由）</h3>
+<p><strong>主要地点データ</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mountain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;北岳&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;広河原〜白根御池経由&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_elevation_gain&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1700</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;waypoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;広河原&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1520</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;06:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;白根御池小屋分岐&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1950</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;08:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;白根御池小屋&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2230</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;草すべり&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;小太郎尾根分岐&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2900</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;13:30&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;肩の小屋&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2983</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14:00&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;北岳山頂&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;elevation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3193</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14:30&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="_5">🔧 技術実装</h2>
+<h3 id="_6">データ補完アルゴリズム</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">interpolate_elevation</span><span class="p">(</span><span class="n">waypoints</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;主要地点間の標高を線形補完&quot;&quot;&quot;</span>
+    <span class="n">interpolated_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waypoints</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">waypoints</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># 距離に基づく補完ポイント数を計算</span>
+        <span class="n">distance_diff</span> <span class="o">=</span> <span class="n">end</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">start</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span>
+        <span class="n">points_count</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">distance_diff</span> <span class="o">*</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 100m間隔</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">points_count</span><span class="p">):</span>
+            <span class="n">ratio</span> <span class="o">=</span> <span class="n">j</span> <span class="o">/</span> <span class="p">(</span><span class="n">points_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">interpolated_point</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;distance&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">distance_diff</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">),</span>
+                <span class="s2">&quot;elevation&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">]</span> <span class="o">+</span> 
+                           <span class="p">(</span><span class="n">end</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">start</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="n">ratio</span>
+            <span class="p">}</span>
+            <span class="n">interpolated_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolated_point</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">interpolated_points</span>
+</code></pre></div>
+
+<h3 id="chartjs">Chart.jsグラフ設定</h3>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">profileConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;line&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">datasets</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;標高プロファイル&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">profileData</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">borderColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2c5aa0&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(44, 90, 160, 0.1)&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">tension</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span>
+<span class="w">        </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">responsive</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">scales</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;距離 (km)&#39;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;標高 (m)&#39;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">tooltip</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">callbacks</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="sb">`標高: </span><span class="si">${</span><span class="nx">context</span><span class="p">.</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">m, 距離: </span><span class="si">${</span><span class="nx">context</span><span class="p">.</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">km`</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<h2 id="_7">📁 ファイル構造</h2>
+<div class="codehilite"><pre><span></span><code>共通資源/profiles/
+├── 奥穂高岳/
+│   ├── profile_data.json        # 主要地点データ
+│   ├── interpolated_data.json   # 補完済みデータ
+│   └── profile.svg              # 静的グラフ画像
+├── 槍ヶ岳/
+├── 立山/
+├── 木曽駒ヶ岳/
+├── 北岳/
+└── profile_generator.py         # グラフ生成スクリプト
+</code></pre></div>
+
+<h2 id="html">🎨 HTMLページでの表示</h2>
+<p>各山のMDファイルに以下のセクションを追加：</p>
+<div class="codehilite"><pre><span></span><code><span class="gu">## コースプロファイル（標高グラフ）</span>
+
+<span class="gu">### 標高変化の概要</span>
+<span class="k">-</span><span class="w"> </span><span class="gs">**総距離**</span>: 10.5km
+<span class="k">-</span><span class="w"> </span><span class="gs">**獲得標高**</span>: +1,580m / -30m
+<span class="k">-</span><span class="w"> </span><span class="gs">**平均勾配**</span>: 15.0%
+<span class="k">-</span><span class="w"> </span><span class="gs">**最大勾配**</span>: 35.0% (ザイテングラード)
+
+&lt;div id=&quot;elevation-profile-chart&quot; class=&quot;mt-4&quot;&gt;
+    &lt;!-- Chart.jsグラフがここに表示される --&gt;
+&lt;/div&gt;
+
+<span class="gu">### 区間別詳細</span>
+| 区間 | 距離 | 標高差 | 勾配 | 特徴 |
+|------|------|--------|------|------|
+| 上高地→横尾 | 5.4km | +110m | 2.0% | 平坦な林道歩き |
+| 横尾→涸沢 | 2.9km | +680m | 23.4% | 急登開始 |
+| 涸沢→山頂 | 2.2km | +890m | 40.5% | 岩場の急登 |
+</code></pre></div>
+
+<hr />
+<p><em>作成日: 2025-08-29</em></p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>クイック情報</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>所在地:</strong> </p>
+                            <p><strong>コースタイム:</strong> </p>
+                            <p><strong>ベストシーズン:</strong> </p>
+                            <hr>
+                            <a href="index.html" class="btn btn-outline-primary btn-sm">山一覧に戻る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light mt-5 py-3">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2025 日本アルプス登山情報データベース</p>
+                <small>登山は自己責任で。最新情報を必ず確認してください。</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // プロファイルデータを埋め込み
+        window.PROFILE_DATA = null;
+    </script>
+    <script src="styles/profile-chart.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "mountain": "槍ヶ岳",
+  "route": "上高地〜槍沢経由",
+  "total_distance": 11.0,
+  "total_elevation_gain": 1670,
+  "waypoints": [
+    {
+      "name": "上高地BT",
+      "distance": 0.0,
+      "elevation": 1510,
+      "time": "06:00"
+    },
+    {
+      "name": "明神池",
+      "distance": 2.1,
+      "elevation": 1530,
+      "time": "07:30"
+    },
+    {
+      "name": "徳沢ロッヂ",
+      "distance": 3.4,
+      "elevation": 1560,
+      "time": "08:30"
+    },
+    {
+      "name": "横尾山荘",
+      "distance": 5.4,
+      "elevation": 1620,
+      "time": "09:30"
+    },
+    {
+      "name": "槍沢ロッヂ",
+      "distance": 7.8,
+      "elevation": 2100,
+      "time": "12:00"
+    },
+    {
+      "name": "大曲",
+      "distance": 8.5,
+      "elevation": 2050,
+      "time": "13:00"
+    },
+    {
+      "name": "槍ヶ岳山荘",
+      "distance": 10.2,
+      "elevation": 3020,
+      "time": "15:30"
+    },
+    {
+      "name": "槍ヶ岳山頂",
+      "distance": 11.0,
+      "elevation": 3180,
+      "time": "16:30"
+    }
+  ]
+}

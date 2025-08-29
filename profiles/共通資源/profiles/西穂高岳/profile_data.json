@@ -1,0 +1,44 @@
+{
+  "mountain": "西穂高岳",
+  "route": "新穂高ロープウェイ経由",
+  "total_distance": 4.0,
+  "total_elevation_gain": 753,
+  "waypoints": [
+    {
+      "name": "西穂高口駅",
+      "distance": 0.0,
+      "elevation": 2156,
+      "time": "08:30"
+    },
+    {
+      "name": "西穂山荘",
+      "distance": 1.2,
+      "elevation": 2400,
+      "time": "09:40"
+    },
+    {
+      "name": "西穂丸山",
+      "distance": 1.7,
+      "elevation": 2500,
+      "time": "10:20"
+    },
+    {
+      "name": "西穂独標",
+      "distance": 2.7,
+      "elevation": 2701,
+      "time": "11:30"
+    },
+    {
+      "name": "ピラミッドピーク",
+      "distance": 3.5,
+      "elevation": 2851,
+      "time": "12:30"
+    },
+    {
+      "name": "西穂高岳山頂",
+      "distance": 4.0,
+      "elevation": 2909,
+      "time": "13:00"
+    }
+  ]
+}

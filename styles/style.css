@@ -1,0 +1,286 @@
+/* 日本アルプス登山情報サイト カスタムCSS */
+
+:root {
+    --primary-color: #2c5aa0;
+    --secondary-color: #28a745;
+    --accent-color: #fd7e14;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+}
+
+/* 全体設定 */
+body {
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ヒーローセクション */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center bottom;
+    background-size: cover;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ナビゲーション */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* カード関連 */
+.mountain-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.mountain-card:hover {
+    transform: translateY(-5px);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* クリッカブルカード */
+.clickable-card {
+    transition: all 0.3s ease;
+}
+
+.clickable-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    border-color: var(--primary-color) !important;
+}
+
+.clickable-card:active {
+    transform: translateY(-2px);
+}
+
+/* 山の詳細ページ */
+.mountain-content h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.mountain-content h3 {
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+}
+
+.mountain-content table {
+    margin: 1rem 0;
+}
+
+.mountain-content table th {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+/* 難易度バッジ */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    font-weight: 600;
+}
+
+/* 難易度別色分け */
+.badge.bg-success {
+    background-color: #28a745 !important;  /* 初級 - 緑 */
+    color: white;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;  /* 中級 - 黄 */
+    color: #212529;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;  /* 上級 - 赤 */
+    color: white;
+}
+
+.badge.bg-dark {
+    background-color: #343a40 !important;  /* エキスパート - 黒 */
+    color: white;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;  /* 不明 - グレー */
+    color: white;
+}
+
+/* 複数バッジ間の間隔 */
+.badge.me-1 {
+    margin-right: 0.25rem !important;
+}
+
+/* 難易度説明ツールチップ */
+.badge[data-bs-toggle="tooltip"] {
+    cursor: help;
+}
+
+/* 体力度・技術度の星表示 */
+.rating-stars {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+/* サイドバー */
+.sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+.sidebar .card {
+    border-left: 4px solid var(--primary-color);
+}
+
+/* 検索・フィルターセクション */
+#search .card {
+    border-top: 4px solid var(--secondary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .hero-section .display-4 {
+        font-size: 2rem;
+    }
+    
+    .mountain-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .sidebar {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+
+/* 山域別セクション */
+section h2 {
+    position: relative;
+    padding-left: 1rem;
+}
+
+section h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+/* フッター */
+footer {
+    margin-top: auto;
+}
+
+/* 検索結果のハイライト */
+.search-highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* ローディング表示 */
+.loading {
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 高度な装飾 */
+.card-header.bg-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+}
+
+/* 印刷対応 */
+@media print {
+    .navbar, footer, .sidebar {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: 100% !important;
+    }
+    
+    .mountain-content {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* アクセシビリティ向上 */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+}
+
+/* スクロールバーのスタイリング */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}

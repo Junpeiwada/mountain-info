@@ -1,0 +1,38 @@
+{
+  "mountain": "立山（雄山）",
+  "route": "室堂〜一ノ越経由",
+  "total_distance": 2.4,
+  "total_elevation_gain": 583,
+  "waypoints": [
+    {
+      "name": "室堂ターミナル",
+      "distance": 0.0,
+      "elevation": 2450,
+      "time": "08:00"
+    },
+    {
+      "name": "みくりが池",
+      "distance": 0.8,
+      "elevation": 2405,
+      "time": "08:15"
+    },
+    {
+      "name": "一ノ越",
+      "distance": 1.5,
+      "elevation": 2700,
+      "time": "09:00"
+    },
+    {
+      "name": "雄山神社",
+      "distance": 2.2,
+      "elevation": 2992,
+      "time": "09:40"
+    },
+    {
+      "name": "雄山山頂",
+      "distance": 2.4,
+      "elevation": 3003,
+      "time": "10:00"
+    }
+  ]
+}

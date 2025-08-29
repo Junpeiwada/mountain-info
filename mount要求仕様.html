@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本アルプス登山情報データベース - 要求仕様書 - 日本アルプス登山情報</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏔️ 日本アルプス登山情報</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">ホーム</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#search">検索</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            山域別
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#north">北アルプス</a></li>
+                            <li><a class="dropdown-item" href="#central">中央アルプス</a></li>
+                            <li><a class="dropdown-item" href="#south">南アルプス</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- 山の基本情報カード -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="mb-0">日本アルプス登山情報データベース - 要求仕様書</h1>
+                        <small>不明 - </small>
+                    </div>
+                    <div class="card-header bg-light text-dark">
+                        <p class="mb-0 fw-bold">🏔️ 日本アルプス登山情報データベース - 要求仕様書の魅力を発見しよう</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>標高:</strong><br>
+                                <span class="h5 text-primary"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>難易度:</strong><br>
+                                <span class="badge bg-secondary"></span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>体力度:</strong><br>
+                                ☆☆☆☆☆
+                            </div>
+                            <div class="col-md-3">
+                                <strong>技術度:</strong><br>
+                                ☆☆☆☆☆
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- メインコンテンツ -->
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="mountain-content">
+                    <h1 id="-">日本アルプス登山情報データベース - 要求仕様書</h1>
+<h2 id="_1">プロジェクト概要</h2>
+<p>北アルプス、中央アルプス、南アルプスの各山の標高や登山道の難易度、獲得標高、登山口までの経路、おすすめの日数、テント場や山小屋の情報、山頂付近から見られる景色の写真などをまとめた資料を山登りフォルダに作成する。</p>
+<h2 id="_2">基本要求事項</h2>
+<h3 id="1">1. データ形式・保存方法</h3>
+<ul>
+<li>✅ <strong>完了</strong>: 各種の集めた情報はMDファイルやフォルダに保存</li>
+<li>✅ <strong>完了</strong>: 最終的にはHTMLで閲覧可能</li>
+<li>✅ <strong>完了</strong>: 構造化されたフォルダ階層での管理</li>
+</ul>
+<h3 id="2">2. 収録対象山域</h3>
+<ul>
+<li>✅ <strong>完了</strong>: 北アルプス（飛騨山脈）</li>
+<li>✅ <strong>完了</strong>: 中央アルプス（木曽山脈）  </li>
+<li>✅ <strong>完了</strong>: 南アルプス（赤石山脈）</li>
+</ul>
+<h3 id="3">3. 各山の必要情報</h3>
+<h4 id="31">3.1 基本情報</h4>
+<ul>
+<li>✅ <strong>完了</strong>: 標高</li>
+<li>✅ <strong>完了</strong>: 登山道の難易度</li>
+<li>✅ <strong>完了</strong>: 獲得標高</li>
+<li>✅ <strong>完了</strong>: 所在地・山系</li>
+</ul>
+<h4 id="32">3.2 アクセス情報</h4>
+<ul>
+<li>✅ <strong>完了</strong>: 登山口までの経路</li>
+<li>✅ <strong>完了</strong>: 交通手段（電車・バス・車）</li>
+<li>✅ <strong>完了</strong>: 駐車場情報</li>
+<li>✅ <strong>完了</strong>: GoogleMapリンク・GPS座標</li>
+</ul>
+<h4 id="33">3.3 登山プラン</h4>
+<ul>
+<li>✅ <strong>完了</strong>: おすすめの日数</li>
+<li>✅ <strong>完了</strong>: コースタイム</li>
+<li>✅ <strong>完了</strong>: 日帰り・1泊2日・2泊3日プラン</li>
+</ul>
+<h4 id="34">3.4 宿泊情報</h4>
+<ul>
+<li>✅ <strong>完了</strong>: テント場の情報（料金・設備・営業期間）</li>
+<li>✅ <strong>完了</strong>: 山小屋の情報（料金・予約方法・連絡先）</li>
+</ul>
+<h4 id="35">3.5 景色・撮影情報</h4>
+<ul>
+<li>❌ <strong>未完了</strong>: 山頂付近から見られる景色の写真</li>
+<li>✅ <strong>完了</strong>: 絶景ポイントの説明</li>
+<li>✅ <strong>完了</strong>: 撮影スポットの情報</li>
+<li>✅ <strong>完了</strong>: ベストシーズン</li>
+</ul>
+<h3 id="4-html">4. HTMLサイト機能</h3>
+<ul>
+<li>✅ <strong>完了</strong>: レスポンシブWebデザイン</li>
+<li>✅ <strong>完了</strong>: 検索・フィルタリング機能</li>
+<li>✅ <strong>完了</strong>: 山域別・難易度別表示</li>
+<li>✅ <strong>完了</strong>: モバイル対応</li>
+</ul>
+<h2 id="_3">追加要求事項（画像関連）</h2>
+<h3 id="5">5. 画像コンテンツ</h3>
+<ul>
+<li>❌ <strong>未完了</strong>: 各山の山頂からの景色写真</li>
+<li>❌ <strong>未完了</strong>: 登山ルート途中の景色写真</li>
+<li>❌ <strong>未完了</strong>: 山小屋・テント場の写真</li>
+<li>❌ <strong>未完了</strong>: 登山口・アクセス地点の写真</li>
+<li>❌ <strong>未完了</strong>: 危険箇所・注意地点の写真</li>
+</ul>
+<h3 id="6">6. コースプロファイル（標高グラフ）</h3>
+<ul>
+<li>❌ <strong>未完了</strong>: メインルートの標高プロファイル作成</li>
+<li>❌ <strong>未完了</strong>: 主要地点の標高・距離データ収集</li>
+<li>❌ <strong>未完了</strong>: インタラクティブなグラフ表示機能</li>
+</ul>
+<h3 id="51">5.1 画像の要件</h3>
+<ul>
+<li><strong>形式</strong>: JPEG, WebP推奨</li>
+<li><strong>サイズ</strong>: Web表示最適化（圧縮済み）</li>
+<li><strong>解像度</strong>: 1920x1080以下</li>
+<li><strong>保存場所</strong>: <code>共通資源/images/</code> 配下に山別フォルダ</li>
+<li><strong>ファイル名</strong>: <code>{山名}_{撮影地点}_{連番}.jpg</code></li>
+</ul>
+<h3 id="61">6.1 コースプロファイルの要件</h3>
+<ul>
+<li><strong>形式</strong>: SVG（ベクター形式）、PNG（ラスター形式）</li>
+<li><strong>グラフタイプ</strong>: 標高グラフ（横軸：距離km、縦軸：標高m）</li>
+<li><strong>データポイント</strong>: </li>
+<li>登山口（スタート地点）</li>
+<li>主要中継地点（山小屋、分岐点、峠など）</li>
+<li>山頂（ゴール地点）</li>
+<li><strong>表示情報</strong>: </li>
+<li>各地点の標高・距離・地点名</li>
+<li>累積標高差（上り・下り）</li>
+<li>区間別コースタイム</li>
+<li><strong>保存場所</strong>: <code>共通資源/profiles/</code> 配下に山別フォルダ</li>
+</ul>
+<h3 id="52">5.2 画像の分類</h3>
+<ol>
+<li><strong>山頂景色</strong>: 山頂から見える他の山々・風景</li>
+<li><strong>ルート写真</strong>: 登山道の様子・難所</li>
+<li><strong>山小屋写真</strong>: 山小屋・テント場の外観（営業時の様子）</li>
+<li><strong>アクセス写真</strong>: 登山口・駐車場・バス停</li>
+<li><strong>季節写真</strong>: 紅葉・雪景色・高山植物</li>
+</ol>
+<h3 id="62">6.2 コースプロファイルのデータ収集方法</h3>
+<ol>
+<li><strong>登山アプリデータの活用</strong>:</li>
+<li>YAMAP公開GPSログの解析</li>
+<li>ヤマレコのコースデータ活用</li>
+<li>
+<p>Strava Segmentデータの参照</p>
+</li>
+<li>
+<p><strong>国土地理院データの活用</strong>:</p>
+</li>
+<li>数値標高モデル（DEM）データ</li>
+<li>地理院地図の等高線データ</li>
+<li>
+<p>登山道の位置情報</p>
+</li>
+<li>
+<p><strong>山小屋・観光協会の公式データ</strong>:</p>
+</li>
+<li>公式コースタイム</li>
+<li>距離・標高差の公式発表値</li>
+</ol>
+<h3 id="53">5.3 画像の表示方法</h3>
+<ul>
+<li>HTMLページにギャラリー機能追加</li>
+<li>画像クリックで拡大表示</li>
+<li>スライドショー機能</li>
+<li>画像の説明キャプション</li>
+</ul>
+<h3 id="63">6.3 コースプロファイルの表示方法</h3>
+<ul>
+<li><strong>インタラクティブグラフ</strong>: Chart.js または D3.js使用</li>
+<li><strong>ホバー表示</strong>: 地点にマウスオーバーで詳細情報表示</li>
+<li><strong>ズーム機能</strong>: グラフの拡大・縮小機能</li>
+<li><strong>レスポンシブ対応</strong>: モバイル端末でも見やすい表示</li>
+<li><strong>データ表示</strong>: </li>
+<li>現在地点の標高・距離</li>
+<li>次の地点までの標高差・距離</li>
+<li>区間別の傾斜度（%）</li>
+</ul>
+<h3 id="54">5.4 出典・クレジット情報の記載要件</h3>
+<ul>
+<li><strong>必須記載項目</strong>:</li>
+<li>出典元サイト名・URL</li>
+<li>撮影者・権利者情報</li>
+<li>撮影時期・ライセンス情報</li>
+<li>
+<p>使用許可状況</p>
+</li>
+<li>
+<p><strong>記載位置</strong>: </p>
+</li>
+<li>各画像の直下にクレジット表記</li>
+<li>ページ末尾に出典一覧</li>
+<li>
+<p>JSONメタデータでの構造化管理</p>
+</li>
+<li>
+<p><strong>表記例</strong>:
+  <code>*出典: 穂高岳山荘公式サイト (https://www.hotakadakesanso.com/)*
+  *撮影時期: 2024年9月 / 使用許可: 観光利用許可済み*</code></p>
+</li>
+</ul>
+<h3 id="55">5.5 信頼できる画像ソース</h3>
+<ul>
+<li><strong>官公庁</strong>: 環境省、各都道府県・市町村観光サイト</li>
+<li><strong>山小屋公式</strong>: 各山小屋の公式サイト・SNS</li>
+<li><strong>登山専門</strong>: ヤマケイオンライン、YAMAP</li>
+<li><strong>フリー素材</strong>: Creative Commons、パブリックドメイン画像</li>
+</ul>
+<h2 id="_4">現在の完了状況</h2>
+<h3 id="_5">✅ 完了項目</h3>
+<ol>
+<li>プロジェクト構造の構築</li>
+<li>MDテンプレートの作成</li>
+<li>主要5山のMDファイル作成</li>
+<li>奥穂高岳（北アルプス・穂高連峰）</li>
+<li>槍ヶ岳（北アルプス）</li>
+<li>立山/雄山（北アルプス・立山連峰）</li>
+<li>木曽駒ヶ岳（中央アルプス）</li>
+<li>北岳（南アルプス）</li>
+<li>HTML変換システム構築</li>
+<li>レスポンシブWebサイト完成</li>
+<li>検索・フィルタリング機能</li>
+</ol>
+<h3 id="_6">❌ 残作業項目</h3>
+<ol>
+<li><strong>画像収集・整理</strong></li>
+<li>山頂からの景色写真収集</li>
+<li>山小屋外観写真収集</li>
+<li>画像ファイルの整理・最適化</li>
+<li>
+<p>画像フォルダ構造の構築</p>
+</li>
+<li>
+<p><strong>コースプロファイル作成</strong></p>
+</li>
+<li>登山アプリGPSデータの収集・解析</li>
+<li>標高グラフの作成（5山のメインルート）</li>
+<li>
+<p>インタラクティブグラフ機能の実装</p>
+</li>
+<li>
+<p><strong>表示機能の実装</strong></p>
+</li>
+<li>HTMLページへの画像ギャラリー追加</li>
+<li>コースプロファイル表示機能</li>
+<li>
+<p>画像拡大・グラフズーム機能</p>
+</li>
+<li>
+<p><strong>追加山岳情報の充実</strong></p>
+</li>
+<li>北アルプス追加山岳（白馬岳、剱岳など）</li>
+<li>中央アルプス追加山岳（宝剣岳など）</li>
+<li>南アルプス追加山岳（仙丈ヶ岳、甲斐駒ヶ岳など）</li>
+</ol>
+<h2 id="_7">技術仕様</h2>
+<h3 id="_8">使用技術</h3>
+<ul>
+<li><strong>データ管理</strong>: Markdown</li>
+<li><strong>HTML生成</strong>: Python + markdown library</li>
+<li><strong>フロントエンド</strong>: HTML5 + Bootstrap 5 + JavaScript</li>
+<li><strong>スタイリング</strong>: CSS3 + カスタムCSS</li>
+<li><strong>画像処理</strong>: 今後実装予定</li>
+</ul>
+<h3 id="_9">ファイル構造</h3>
+<div class="codehilite"><pre><span></span><code>山登り/
+├── README.md
+├── mount要求仕様.md
+├── build_html.py              # HTML生成スクリプト
+├── 共通資源/
+│   ├── images/               # 画像ファイル（未実装）
+│   │   ├── 奥穂高岳/         # 山別画像フォルダ
+│   │   ├── 槍ヶ岳/
+│   │   └── ...
+│   ├── profiles/             # コースプロファイル（未実装）
+│   │   ├── 奥穂高岳/         # 山別プロファイルデータ
+│   │   └── ...
+│   ├── maps/                 # ルート図
+│   └── templates/            # MDテンプレート
+├── 北アルプス/
+│   ├── 穂高連峰/奥穂高岳.md
+│   ├── 槍ヶ岳/槍ヶ岳.md
+│   └── 立山連峰/立山（雄山）.md
+├── 中央アルプス/
+│   └── 木曽駒ヶ岳/木曽駒ヶ岳.md
+├── 南アルプス/
+│   └── 北岳/北岳.md
+└── docs/                     # HTML出力
+    ├── index.html
+    ├── *.html               # 各山のページ
+    └── styles/              # CSS/JS
+</code></pre></div>
+
+<h2 id="_10">品質基準</h2>
+<h3 id="_11">データ品質</h3>
+<ul>
+<li>最新の登山情報（2025年基準）</li>
+<li>正確なGPS座標・地図リンク</li>
+<li>信頼できる情報源からの収集</li>
+<li>安全情報の充実</li>
+</ul>
+<h3 id="uiux">UI/UX品質</h3>
+<ul>
+<li>モバイルファースト設計</li>
+<li>アクセシビリティ対応</li>
+<li>高速な検索・フィルタリング</li>
+<li>直感的なナビゲーション</li>
+</ul>
+<h3 id="_12">画像品質（今後実装）</h3>
+<ul>
+<li>高解像度かつWeb最適化</li>
+<li>統一された撮影アングル</li>
+<li>季節・天候を考慮した撮影</li>
+<li>著作権クリアな画像のみ使用</li>
+</ul>
+<hr />
+<p><em>作成日: 2025-08-29</em>
+<em>最終更新: 2025-08-29</em></p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>クイック情報</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>所在地:</strong> </p>
+                            <p><strong>コースタイム:</strong> </p>
+                            <p><strong>ベストシーズン:</strong> </p>
+                            <hr>
+                            <a href="index.html" class="btn btn-outline-primary btn-sm">山一覧に戻る</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light mt-5 py-3">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; 2025 日本アルプス登山情報データベース</p>
+                <small>登山は自己責任で。最新情報を必ず確認してください。</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // プロファイルデータを埋め込み
+        window.PROFILE_DATA = null;
+    </script>
+    <script src="styles/profile-chart.js"></script>
+</body>
+</html>

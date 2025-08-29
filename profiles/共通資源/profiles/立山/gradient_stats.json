@@ -1,0 +1,31 @@
+{
+  "average_gradient": 20.933035714285715,
+  "max_gradient": 42.142857142857146,
+  "min_gradient": -5.625,
+  "sections": [
+    {
+      "section": "室堂ターミナル→みくりが池",
+      "distance": 0.8,
+      "elevation_diff": -45,
+      "gradient": -5.625
+    },
+    {
+      "section": "みくりが池→一ノ越",
+      "distance": 0.7,
+      "elevation_diff": 295,
+      "gradient": 42.142857142857146
+    },
+    {
+      "section": "一ノ越→雄山神社",
+      "distance": 0.7000000000000002,
+      "elevation_diff": 292,
+      "gradient": 41.7142857142857
+    },
+    {
+      "section": "雄山神社→雄山山頂",
+      "distance": 0.19999999999999973,
+      "elevation_diff": 11,
+      "gradient": 5.500000000000007
+    }
+  ]
+}

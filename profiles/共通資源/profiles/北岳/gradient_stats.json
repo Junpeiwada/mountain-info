@@ -1,0 +1,43 @@
+{
+  "average_gradient": 25.087301587301585,
+  "max_gradient": 39.999999999999986,
+  "min_gradient": 13.833333333333343,
+  "sections": [
+    {
+      "section": "広河原→白根御池小屋分岐",
+      "distance": 2.8,
+      "elevation_diff": 430,
+      "gradient": 15.357142857142858
+    },
+    {
+      "section": "白根御池小屋分岐→白根御池小屋",
+      "distance": 0.7000000000000002,
+      "elevation_diff": 280,
+      "gradient": 39.999999999999986
+    },
+    {
+      "section": "白根御池小屋→草すべり",
+      "distance": 1.5,
+      "elevation_diff": 270,
+      "gradient": 18.0
+    },
+    {
+      "section": "草すべり→小太郎尾根分岐",
+      "distance": 1.2000000000000002,
+      "elevation_diff": 400,
+      "gradient": 33.33333333333333
+    },
+    {
+      "section": "小太郎尾根分岐→肩の小屋",
+      "distance": 0.5999999999999996,
+      "elevation_diff": 83,
+      "gradient": 13.833333333333343
+    },
+    {
+      "section": "肩の小屋→北岳山頂",
+      "distance": 0.7000000000000002,
+      "elevation_diff": 210,
+      "gradient": 29.99999999999999
+    }
+  ]
+}
